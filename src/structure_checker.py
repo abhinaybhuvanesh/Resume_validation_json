@@ -3,7 +3,7 @@ def find_field(data, possible_names):
         for name in possible_names:
             if name in data:
                 return data[name]
-        for key, value in data.items():
+        for value in data.values():
             result = find_field(value, possible_names)
             if result is not None:
                 return result
@@ -14,26 +14,28 @@ def find_field(data, possible_names):
                 return result
     return None
 
-def extract_candidate_info(data):
-    info = {
-        "candidate_id": None,
-        "name": None,
-        "email": None
-    }
-    id_names = ["candidate_id", "candidateId", "id", "user_id", "userId", "candidateid"]
-    name_names = ["name", "full_name", "fullName", "candidate_name", "candidateName", "username"]
-    email_names = ["email", "email_id", "emailId", "mail", "e-mail"]
-
-    info["candidate_id"] = find_field(data, id_names) or "unknown"
-    info["name"] = find_field(data, name_names) or "unknown"
-    info["email"] = find_field(data, email_names) or "unknown"
+def extract_info(data):
+    info = {"candidate_id": "unknown", "name": "unknown", "email": "unknown"}
+    
+    id_names = ["candidate_id", "candidateId", "id", "user_id", "userId"]
+    name_names = ["name", "full_name", "fullName", "candidate_name", "username"]
+    email_names = ["email", "email_id", "emailId", "mail", "emails"]
+    
+    found_id = find_field(data, id_names)
+    if found_id:
+        info["candidate_id"] = str(found_id)
+    
+    found_name = find_field(data, name_names)
+    if found_name:
+        info["name"] = str(found_name)
+    
+    found_email = find_field(data, email_names)
+    if isinstance(found_email, list) and len(found_email) > 0:
+        info["email"] = str(found_email[0])
+    elif isinstance(found_email, str):
+        info["email"] = found_email
+    
     return info
 
-def check_json_structure(data):
-    info = extract_candidate_info(data)
-    return {
-        "valid": True,
-        "issues": [],
-        "extracted_info": info,
-        "original_data": data
-    }
+def check_structure(data):
+    return {"valid": True, "extracted_info": extract_info(data), "original_data": data}
