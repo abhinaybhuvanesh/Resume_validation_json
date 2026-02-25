@@ -1,3 +1,38 @@
 rules:
-  date_format: "%Y-%m-%d"
+  date_formats:
+    - "%Y-%m-%d"
+    - "%Y-%m"
+    - "%Y"
+    - "%d/%m/%Y"
+    - "%m/%d/%Y"
+    - "%b %Y"
+    - "%B %Y"
+    - "%d %b %Y"
+    - "%d %B %Y"
+    - "%Y.%m.%d"
+    - "%d.%m.%Y"
   min_description_length: 10
+  min_experience_duration_days: 1
+sections:
+  experience:
+    required_fields: ["title", "company", "start_date"]
+    validate_dates: true
+    validate_duration: true
+  education:
+    required_fields: ["degree", "institution"]
+    validate_dates: true
+  projects:
+    required_fields: ["name", "description"]
+    require_technologies: true
+  certifications:
+    required_fields: ["name", "issuer"]
+    validate_url: true
+field_mappings:
+  title: ["title", "position", "role", "job_title", "designation"]
+  company: ["company", "employer", "organization", "firm", "company_name"]
+  start_date: ["startDate", "start_date", "from", "start"]
+  end_date: ["endDate", "end_date", "to", "end", "current"]
+  description: ["description", "summary", "details", "highlights"]
+  name: ["name", "full_name", "candidate_name", "fullName"]
+  email: ["email", "emails", "mail", "e-mail", "emailId","gmail"]
+  phone: ["phone", "mobile", "phone_number", "telephone", "tel","phone_no"]

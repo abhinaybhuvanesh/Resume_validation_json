@@ -1,13 +1,13 @@
 {
-  "name": "Dhruv Aggarwal",
+  "name": "",
   "emails": [
-    "aggarwaldhruv419@gmail.com"
+    "aggarwaldhruv419@gmail"
   ],
   "phone_numbers": [
-    "+91 8864836870"
+    "aaaa"
   ],
-  "linkedin": "https://www.linkedin.com/in/dhruv-aggarwal-5a0121274/",
-  "github": "https://github.com/dhruvaggarwal419",
+  "linkedin": "https://www.youtube.com",
+  "github": "https://linkedin/dhruvaggarwal419",
   "leetcode": "https://leetcode.com/u/dhruvaggarwal01/",
   "codeforces": null,
   "codechef": null,
@@ -25,7 +25,7 @@
       "degree": "12th",
       "institution": "Nirmal Deepmala School (NDS)",
       "duration": "2022",
-      "grade": "90.20%"
+      "grade": "200%"
     },
     "class10": {
       "degree": "10th",
@@ -36,7 +36,7 @@
   },
   "projects": [
     {
-      "name": "Operating System Simulator",
+      "name": "null",
       "duration": null,
       "github": "https://github.com/dhruvaggarwal419/An-Operating-System-Simulator",
       "points": {
